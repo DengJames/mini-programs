@@ -1,0 +1,56 @@
+/** Class that determines whether or not a year is a leap year.
+ *  @author YOUR NAME HERE
+ */
+public class LeapYear {
+
+
+    /** Checks if the input year is a leap year
+      * if year can be evenly divied by 4, by 100, and by 400, it's a leap year
+      * if year can be evenly divided by 4 but not 100, it's still a leap year
+      * not a leap year otherwise
+      */   
+     public static boolean isLeapYear(int year){
+        if (year % 4 == 0){
+            if (year % 100 == 0){
+                if (year % 400 == 0){
+                    return true;
+                }   else {
+                    return false;
+                }
+            }   else {
+                return true;
+            }
+        }   else {
+            return false;
+        }
+     } 
+
+
+    /** Calls isLeapYear to print correct statement.
+     *  @param  year to be analyzed
+     */
+    private static void checkLeapYear(int year) {
+        if (isLeapYear(year)) {
+            System.out.printf("%d is a leap year.\n", year);
+        } else {
+            System.out.printf("%d is not a leap year.\n", year);
+        }
+    }
+
+    /** Must be provided an integer as a command line argument ARGS. */
+    public static void main(String[] args) {
+        if (args.length < 1) {
+            System.out.println("Please enter command line arguments.");
+            System.out.println("e.g. java Year 2000");
+        }
+        for (int i = 0; i < args.length; i++) {
+            try {
+                int year = Integer.parseInt(args[i]);
+                checkLeapYear(year);
+            } catch (NumberFormatException e) {
+                System.out.printf("%s is not a valid number.\n", args[i]);
+            }
+        }
+    }
+}
+
